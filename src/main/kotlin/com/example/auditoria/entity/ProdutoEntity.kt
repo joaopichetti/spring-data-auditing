@@ -1,6 +1,8 @@
 package com.example.auditoria.entity
 
+import org.springframework.data.annotation.CreatedBy
 import org.springframework.data.annotation.CreatedDate
+import org.springframework.data.annotation.LastModifiedBy
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.time.LocalDateTime
@@ -28,6 +30,14 @@ class ProdutoEntity(
 
     @Column(name = "atualizado_em", nullable = false)
     @LastModifiedDate
-    var atualizadoEm: LocalDateTime? = null
+    var atualizadoEm: LocalDateTime? = null,
+
+    @Column(name = "criado_por", nullable = false, updatable = false)
+    @CreatedBy
+    var criadoPor: String? = null,
+
+    @Column(name = "atualizado_por", nullable = false)
+    @LastModifiedBy
+    var atualizadoPor: String? = null
 
 )
